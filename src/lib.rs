@@ -147,14 +147,14 @@ impl CommandTrigger {
         store_builder.env(component_env_vars)?;
 
         // preopen dirs provided by GitHub
-        for mount in static_vol_mounts().iter() {
-            if !Path::new(mount.0).exists() {
-                tracing::warn!("dir {} does not exist", mount.0);
-                continue;
-            }
-            
-            store_builder.read_write_preopened_dir(mount.0, mount.1.into())?;
-        }
+        // for mount in static_vol_mounts().iter() {
+        //     if !Path::new(mount.0).exists() {
+        //         tracing::warn!("dir {} does not exist", mount.0);
+        //         continue
+        //     }
+
+        //     store_builder.read_write_preopened_dir(mount.0, mount.1.into())?;
+        // }
 
         args.apply_args_to_store(&component.id, &mut store_builder)?;
 
