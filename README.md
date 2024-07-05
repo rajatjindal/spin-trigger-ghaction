@@ -1,4 +1,4 @@
-# Spin `ghaction` Trigger
+# Spin ghaction Trigger
 
 This is a proof-of-concept [Spin](https://github.com/fermyon/spin) trigger to run GitHub actions using Spin/Wasmtime. This trigger is built on top of [spin-trigger-command](https://github.com/fermyon/spin-trigger-command)
 
