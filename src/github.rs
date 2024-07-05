@@ -66,9 +66,9 @@ pub fn static_vol_mounts() -> Vec<(&'static str, &'static str)> {
             "/home/runner/work/_temp/_runner_file_commands",
             "/github/file_commands",
         ),
-        (
-            "/home/runner/work/conditioner/conditioner",
-            "/github/workspace",
-        ),
+        // (
+        //     "/home/runner/work/conditioner/conditioner",
+        //     "/github/workspace",
+        // ),
     ]
 }
