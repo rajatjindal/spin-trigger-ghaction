@@ -31,6 +31,14 @@ The trigger is installed as a Spin plugin. It can be installed from a release or
 
 To install from a release, reference a plugin manifest from a [release](https://github.com/fermyon/spin-trigger-ghaction/releases). For example, to install the canary release:
 
+
+TODO:
+
+- [ ] Add example to setup a new executable on the runner
+- [ ] Add example to show how to get token from vault
+- [ ] Add example to show how a malicious actor cannot make request to a random url
+- [ ] Add example to show how to access checked-out code, in guest, mounted via runtime
+
 ```sh
 spin plugins install --url https://github.com/rajatjindal/spin-trigger-ghaction/releases/download/canary/trigger-ghaction.json
 ```
