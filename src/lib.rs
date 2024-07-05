@@ -7,6 +7,7 @@ use spin_core::Engine;
 use spin_trigger::TriggerInstancePre;
 use spin_trigger::{TriggerAppEngine, TriggerExecutor};
 use std::env;
+use std::path::Path;
 use wasmtime_wasi::bindings::Command;
 
 mod github;
@@ -147,6 +148,11 @@ impl CommandTrigger {
 
         // preopen dirs provided by GitHub
         for mount in static_vol_mounts().iter() {
+            if !Path::new(mount.0).exists() {
+                tracing::warn!("dir {} does not exist", mount.0);
+                continue;
+            }
+            
             store_builder.read_write_preopened_dir(mount.0, mount.1.into())?;
         }
 
