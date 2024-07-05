@@ -1,4 +1,4 @@
-pub const GITHUB_ENV: [&'static str; 50] = [
+pub const GITHUB_ENV: [&str; 50] = [
     "INPUT_WORKDIR",
     "INPUT_KREW_TEMPLATE_FILE",
     "HOME",
@@ -52,11 +52,11 @@ pub const GITHUB_ENV: [&'static str; 50] = [
 ];
 
 pub fn static_env_vars() -> Vec<(&'static str, &'static str)> {
-    return vec![("GITHUB_ACTIONS", "true"), ("CI", "true")];
+    vec![("GITHUB_ACTIONS", "true"), ("CI", "true")]
 }
 
 pub fn static_vol_mounts() -> Vec<(&'static str, &'static str)> {
-    return vec![
+    vec![
         ("/home/runner/work/_temp/_github_home", "/github/home"),
         (
             "/home/runner/work/_temp/_github_workflow",
@@ -70,5 +70,5 @@ pub fn static_vol_mounts() -> Vec<(&'static str, &'static str)> {
             "/home/runner/work/conditioner/conditioner",
             "/github/workspace",
         ),
-    ];
+    ]
 }
