@@ -2,6 +2,24 @@
 
 This is a proof-of-concept [Spin](https://github.com/fermyon/spin) trigger to run GitHub actions using Spin/Wasmtime. This trigger is built on top of [spin-trigger-command](https://github.com/fermyon/spin-trigger-command)
 
+## The end goal
+
+Be able to specify following as an officially supported format by GitHub. (Before you say, I agree that is a stretch. but someone rightly said, first step in achieving something is to dream about it.)
+
+```
+name: "get-vault-token"
+description: "fetch vault token securely"
+runs:
+  using: "spin"
+  image: "oci://ghcr.io/rajatjindal/get-vault-token:v0.0.46"
+inputs:
+  workdir:
+    description: "Working directory, defaults to env.GITHUB_WORKSPACE"
+  vault_url:
+    description: "the url to fetch vault token from"
+
+```
+
 ## How it works
 
 WebAssembly is sandboxed by default, and you ask for permissions that you require to run. The idea is that the GitHub actions author will have to ask for specific permissions and this runtime trigger will enable only those capabilities. 
@@ -40,6 +58,8 @@ Goals:
 - [ ] Able to download a tool that needs whole dir setup and add it to toolcache and path.
 - [ ] Able to get token from a service such as vault
 
+
+## Installing
 ```sh
 spin plugins install --url https://github.com/rajatjindal/spin-trigger-ghaction/releases/download/canary/trigger-ghaction.json
 ```
