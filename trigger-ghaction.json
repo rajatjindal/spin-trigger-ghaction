@@ -1,0 +1,14 @@
+{
+  "name": "trigger-ghaction",
+  "version": "0.1",
+  "spinCompatibility": ">=2.0",
+  "license": "Apache-2.0",
+  "packages": [
+    {
+      "os": "macos",
+      "arch": "aarch64",
+      "url": "file:///Users/rajatjindal/go/src/github.com/rajatjindal/spin-trigger-ghaction/trigger-ghaction-0.1-macos-aarch64.tar.gz",
+      "sha256": "5632232ccf814331fe2ea4025a6e00a9a5d66ddde6bd7634b4f1b9decb198b87"
+    }
+  ]
+}
