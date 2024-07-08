@@ -20,6 +20,10 @@ inputs:
 
 ```
 
+## Show me an example
+
+A [test-repo](https://github.com/rajatjindal/wasm-actions/blob/main/.github/workflows/test.yml) demonstrating setting up a tool using this plugin in GitHub actions.
+
 ## How it works
 
 WebAssembly is sandboxed by default, and you ask for permissions that you require to run. The idea is that the GitHub actions author will have to ask for specific permissions and this runtime trigger will enable only those capabilities. 
