@@ -86,12 +86,10 @@ impl TriggerExecutor for CommandTrigger {
                 env: config.env.clone(),
             })
             .collect();
-        println!("components {:?}", components);
         Ok(Self { engine, components })
     }
 
     async fn run(self, config: Self::RunConfig) -> Result<()> {
-        println!("inside run {:?}", config);
         self.handle(config).await
     }
 }
@@ -146,15 +144,13 @@ impl CommandTrigger {
         let component_env_vars = get_env_for_component(component.env.clone())?;
         store_builder.env(component_env_vars)?;
 
-        // preopen dirs provided by GitHub
-        // for mount in static_vol_mounts().iter() {
-        //     if !Path::new(mount.0).exists() {
-        //         tracing::warn!("dir {} does not exist", mount.0);
-        //         continue
-        //     }
+        for mount in static_vol_mounts().iter() {
+            if !Path::new(mount.0).exists() {
+                return Err(anyhow::anyhow!("dir {} does not exist", mount.0));
+            }
 
-        //     store_builder.read_write_preopened_dir(mount.0, mount.1.into())?;
-        // }
+            store_builder.read_write_preopened_dir(mount.0, mount.1.into())?;
+        }
 
         args.apply_args_to_store(&component.id, &mut store_builder)?;
 

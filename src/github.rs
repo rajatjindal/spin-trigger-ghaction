@@ -57,18 +57,6 @@ pub fn static_env_vars() -> Vec<(&'static str, &'static str)> {
 
 pub fn static_vol_mounts() -> Vec<(&'static str, &'static str)> {
     vec![
-        ("/home/runner/work/_temp/_github_home", "/github/home"),
-        (
-            "/home/runner/work/_temp/_github_workflow",
-            "/github/workflow",
-        ),
-        (
-            "/home/runner/work/_temp/_runner_file_commands",
-            "/github/file_commands",
-        ),
-        // (
-        //     "/home/runner/work/conditioner/conditioner",
-        //     "/github/workspace",
-        // ),
+        ("spin-ghactions-tmp", "/spin-ghactions-tmp"),
     ]
 }
