@@ -1,8 +1,9 @@
 use clap::Parser;
-use spin_trigger::cli::TriggerExecutorCommand;
-use trigger_ghaction::CommandTrigger;
+use spin_runtime_factors::FactorsBuilder;
+use spin_trigger::cli::FactorsTriggerCommand;
+use trigger_ghaction::GitHubActionsTrigger;
 
-type Command = TriggerExecutorCommand<CommandTrigger>;
+type Command = FactorsTriggerCommand<GitHubActionsTrigger, FactorsBuilder>;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

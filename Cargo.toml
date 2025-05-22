@@ -12,23 +12,22 @@ edition = "2021"
 
 [workspace]
 
+
 [dependencies]
-anyhow = "1.0.75"
-async-trait = "0.1"
+anyhow = "1.0"
 clap = { version = "3.1.15", features = ["derive", "env"] }
 serde = "1.0"
-spin-app = { git = "https://github.com/fermyon/spin", tag = "v2.6.0" }
-spin-core = { git = "https://github.com/fermyon/spin", tag = "v2.6.0" }
-spin-trigger = { git = "https://github.com/fermyon/spin", tag = "v2.6.0" }
-spin-telemetry = { git = "https://github.com/fermyon/spin", tag = "v2.6.0" }
-tokio = { version = "1.23", features = ["full"] }
+spin-trigger = { git = "https://github.com/spinframework/spin", tag = "v3.2.0" }
+spin-core = { git = "https://github.com/spinframework/spin", tag = "v3.2.0" }
+spin-telemetry = { git = "https://github.com/spinframework/spin", tag = "v3.2.0" }
+spin-factors = { git = "https://github.com/spinframework/spin", tag = "v3.2.0" }
+spin-factor-wasi = { git = "https://github.com/spinframework/spin", tag = "v3.2.0" }
+spin-runtime-factors = { git = "https://github.com/spinframework/spin", tag = "v3.2.0" }
+tokio = { version = "1.38", features = ["rt", "macros"] }
 tracing = { version = "0.1", features = ["log"] }
-wasmtime-wasi = "21.0.1"
+wasmtime-wasi = "29.0.1"
 
 [target.'cfg(target_os = "linux")'.dependencies]
 # This needs to be an explicit dependency to enable
 # '--features openssl/vendored', which is used for Linux releases.
 openssl = { version = "0.10" }
-
-[workspace.dependencies]
-wit-bindgen = "0.16.0"
