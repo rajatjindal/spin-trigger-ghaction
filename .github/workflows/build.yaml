@@ -27,11 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  
+        uses: actions/checkout@v4
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.76
+          toolchain: 1.86
         
       - name: Install dependencies
         run: |
@@ -54,13 +54,13 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { target: "x86_64-unknown-linux-gnu", os: "ubuntu-20.04", arch: "amd64", extension: ""}
-          - { target: "aarch64-unknown-linux-gnu", os: "ubuntu-20.04", arch: "aarch64", extension: "", extraArg: "--features openssl/vendored" }
+          - { target: "x86_64-unknown-linux-gnu", os: "ubuntu-latest", arch: "amd64", extension: ""}
+          - { target: "aarch64-unknown-linux-gnu", os: "ubuntu-latest", arch: "aarch64", extension: "", extraArg: "--features openssl/vendored" }
           - { target: "x86_64-apple-darwin", os: "macos-13", arch: "amd64", extension: "" }
           - { target: "aarch64-apple-darwin", os: "macos-14", arch: "aarch64", extension: "" }
           - { target: "x86_64-pc-windows-msvc", os: "windows-latest", arch: "amd64", extension: ".exe" }
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
         with:
           shared-key: "${{ runner.os }}-lint-${{ hashFiles('./Cargo.lock') }}"
@@ -68,7 +68,7 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.76
+          toolchain: 1.86
           targets: ${{ matrix.config.target }}
       - name: Install Spin
         uses: rajatjindal/setup-actions/spin@main
@@ -93,7 +93,7 @@ jobs:
       - name: Pluginify plugin binary
         run: spin pluginify --arch ${{ matrix.config.arch }}
       - name: Archive pluginified
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROGRAM_NAME}}-${{ matrix.config.os }}-${{ matrix.config.arch }}
           path: |

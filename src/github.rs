@@ -52,11 +52,14 @@ pub const GITHUB_ENV: [&str; 50] = [
 ];
 
 pub fn static_env_vars() -> Vec<(&'static str, &'static str)> {
-    vec![("GITHUB_ACTIONS", "true"), ("CI", "true"), ("RUNTIME_OS", std::env::consts::OS), ("RUNTIME_ARCH", std::env::consts::ARCH)]
+    vec![
+        ("GITHUB_ACTIONS", "true"),
+        ("CI", "true"),
+        ("RUNTIME_OS", std::env::consts::OS),
+        ("RUNTIME_ARCH", std::env::consts::ARCH),
+    ]
 }
 
 pub fn static_vol_mounts() -> Vec<(&'static str, &'static str)> {
-    vec![
-        ("spin-ghactions-tmp", "/spin-ghactions-tmp"),
-    ]
+    vec![("spin-ghactions-tmp", "/spin-ghactions-tmp")]
 }
